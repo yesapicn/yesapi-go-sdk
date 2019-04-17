@@ -5,4 +5,31 @@
 
 ## 使用示例
 
-![](http://cdn7.okayapi.com/89E670FD80BA98E7F7D7E81688123F32_20190417103717_3ecbf210385c623badf64ed0d0189a04.PNG)
+```go
+package main
+
+import (
+	"./YesApiCilent"
+	"fmt"
+)
+
+func main() {
+	param := map[string]string{"s": "App.Hello.World" , "name" : "HXH"}
+
+	rs, err := YesApiCilent.DoRequest(param)
+	if err != nil {
+		fmt.Println(err.Error())
+	} else {
+		fmt.Println("code：", rs.Code)
+		fmt.Println("data：", rs.Data)
+		fmt.Println("msg：", rs.Msg)
+	}
+}
+```
+
+## 返回示例
+```
+code： 200
+data： map[err_code:0 err_msg: title:Hi HXH，欢迎使用小白接口！]
+msg： 当前小白接口：App.Hello.World
+```
