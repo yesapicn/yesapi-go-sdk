@@ -1,9 +1,11 @@
-package YesApiCilent
+ipackage YesApiCilent
 
-import "testing"
+import (
+	"testing"
+)
 
 /**
- * YesApi客户端单元测试
+ * YesApi客户端单元测试,性能测试
  * @package   YesApiCilent
  * @author    sHuXnHs <610087273@qq.com>
  */
@@ -18,5 +20,13 @@ func TestDoRequest(t *testing.T) {
 		t.Log("code：", rs.Code)
 		t.Log("data：", rs.Data)
 		t.Log("msg：", rs.Msg)
+	}
+}
+
+func BenchmarkDoRequest(b *testing.B) {
+	param := map[string]string{"s": "App.Hello.World" , "name" : "HXH"}
+	b.ReportAllocs()
+	for i := 0; i< b.N ; i++ {
+		_,_ = DoRequest(param)
 	}
 }
