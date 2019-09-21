@@ -1,4 +1,4 @@
-ipackage YesApiCilent
+package YesApiCilent
 
 import (
 	"testing"
@@ -11,7 +11,7 @@ import (
  */
 
 func TestDoRequest(t *testing.T) {
-	param := map[string]string{"s": "App.Hello.World" , "name" : "HXH"}
+	param := map[string]string{"s": "App.Hello.World", "name": "HXH"}
 	rs, err := DoRequest(param)
 	if err != nil {
 		t.Log("请求失败")
@@ -24,9 +24,9 @@ func TestDoRequest(t *testing.T) {
 }
 
 func BenchmarkDoRequest(b *testing.B) {
-	param := map[string]string{"s": "App.Hello.World" , "name" : "HXH"}
+	param := map[string]string{"s": "App.Hello.World", "name": "HXH"}
 	b.ReportAllocs()
-	for i := 0; i< b.N ; i++ {
-		_,_ = DoRequest(param)
+	for i := 0; i < b.N; i++ {
+		_, _ = DoRequest(param)
 	}
 }
