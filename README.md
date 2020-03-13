@@ -9,8 +9,8 @@
 package main
 
 import (
-	"./YesApiCilent"
-	"fmt"
+    "fmt"
+    "yesapi-go-sdk/YesApiCilent"
 )
 
 func main() {
@@ -24,6 +24,19 @@ func main() {
 		fmt.Println("data：", rs.Data)
 		fmt.Println("msg：", rs.Msg)
 	}
+
+    // 第二版改进
+	yesapiClient := YesApiCilent.NewYesApiClient()
+	// 可以做账号的切换，也可以在NewYesApiClient()方法写死配置
+	yesapiClient.SetYesapiHost("").SetYesapiAppKey("").SetYesapiAppSecrect("")
+	res, err := yesapiClient.DoRequest(param)
+	if err != nil{
+		fmt.Println(err)
+	}
+	fmt.Println("code：", res.Code)
+	fmt.Println("data：", res.Data)
+	fmt.Println("msg：", res.Msg)
+
 }
 ```
 
